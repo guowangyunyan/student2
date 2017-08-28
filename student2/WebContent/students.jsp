@@ -5,12 +5,31 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>学生列表</title>
+<script type="text/javascript">
+	$(function(){
+		$("#query").on("click",function(){
+			var name=$("input[name='queryName']").val();
+			var sex=$("input[name='sex']:checked").val();
+			var url="student?option=query&name="+name+"&sex="+sex;
+			window.location.herf=url;
+		});
+	});
+
+</script>
 </head>
 <body>
 	<h1>学生列表</h1>
+	<hr>query:<br>
+	name:<input type="text" name="queryName" value="${name }"/>&nbsp;&nbsp;
+	sex:<input type="radio" ${sex==0?'checked':'' } name="sex" value="0"/>男
+	<input type="radio" ${sex==0?'checked':'' } name="sex" value="0"/>女
+	<input type="radio" ${sex==2?'checked':'' } name="sex" value="2" checked/>全部
+	<input type="hidden" name="option" value="query"/>
+	<a id="query">查询</a>
 	<div>
 		<a href="add.jsp">添加学生信息</a>
 	</div>
+	
 	<table border="1">
 		<thead>
 			<tr>
