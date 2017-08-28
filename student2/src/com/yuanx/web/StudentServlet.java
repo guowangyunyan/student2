@@ -52,6 +52,25 @@ public class StudentServlet extends HttpServlet {
 		if ("update".equals(option)) {// 修改学生信息
 			update(request, response);
 		}
+		if ("query".equals(option)) {
+			query(request, response);
+		}
+	}
+
+	private void query(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String name = request.getParameter("name");
+		int sex = Integer.parseInt(request.getParameter("sex"));
+		String pageNum = request.getParameter("pageNum");
+
+		if (pageNum == null || "".equals(pageNum)) {
+			pageNum = "1";
+		}
+		int newPageNum = Integer.parseInt(pageNum);
+		int pageSize = 5;
+		PageBean<Student> pb = studentService.findStudentWithPage(name, sex, newPageNum, pageSize);
+		request.setAttribute("pb", pb);
+		request.getRequestDispatcher("students.jsp").forward(request, response);
+
 	}
 
 	// 修改学生信息

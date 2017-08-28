@@ -18,4 +18,8 @@ public interface StudentDao {
 
 	boolean addStudent(Student student);
 
+	List<Student> findStudentTotalRecord(String name, int sex);
+
+	List<Student> findStudent(String name, int sex, int startIndex, int pageSize);
+
 }

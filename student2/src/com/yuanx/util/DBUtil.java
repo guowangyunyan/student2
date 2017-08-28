@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 //jdbc工具类
 public class DBUtil {
@@ -52,32 +51,6 @@ public class DBUtil {
 		return rs;
 	}
 
-	public static Statement getStatement(Connection conn) {
-		Statement stmt = null;
-		try {
-			if (conn != null) {
-				stmt = conn.createStatement();
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return stmt;
-	}
-
-	public static ResultSet getResultSet(Statement stmt, String sql) {
-		ResultSet rs = null;
-		try {
-			if (stmt != null) {
-				rs = stmt.executeQuery(sql);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return rs;
-	}
-
 	public static void colse(Connection conn) {
 		try {
 			if (conn != null) {
@@ -94,17 +67,6 @@ public class DBUtil {
 			if (ps != null) {
 				ps.close();
 				ps = null;
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public static void close(Statement stmt) {
-		try {
-			if (stmt != null) {
-				stmt.close();
-				stmt = null;
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

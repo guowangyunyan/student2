@@ -16,17 +16,6 @@ public class StudentServiceImpl implements StudentService {
 		studentDao = new StudentDaoImpl();
 	}
 
-	// 分页展示所有学生信息
-	@Override
-	public PageBean<Student> findAllStudentWithPage(int newPageNum, int pageSize) {
-		List<Student> students = studentDao.findAllStudent();
-		int totalRecord = students.size();
-		PageBean<Student> pb = new PageBean<Student>(newPageNum, pageSize, totalRecord);
-		int startIndex = pb.getStartIndex();
-		pb.setList(studentDao.findAll(startIndex, pageSize));
-		return pb;
-	}
-
 	// 删除学生信息
 	@Override
 	public void deleteStudent(String id) {
@@ -63,6 +52,29 @@ public class StudentServiceImpl implements StudentService {
 		student.setSex(Integer.parseInt(sex));
 		student.setBirthday(new Date());
 		studentDao.addStudent(student);
+	}
+
+	// 分页展示所有学生信息
+	@Override
+	public PageBean<Student> findAllStudentWithPage(int newPageNum, int pageSize) {
+		List<Student> students = studentDao.findAllStudent();
+		int totalRecord = students.size();
+		PageBean<Student> pb = new PageBean<Student>(newPageNum, pageSize, totalRecord);
+		int startIndex = pb.getStartIndex();
+		pb.setList(studentDao.findAll(startIndex, pageSize));
+		return pb;
+	}
+
+	// 分页查询所需要查询的学生
+	@Override
+	public PageBean<Student> findStudentWithPage(String name, int sex, int newPageNum, int pageSize) {
+		List<Student> students = studentDao.findStudentTotalRecord(name, sex);
+		int totalRecord = students.size();
+
+		PageBean<Student> pb = new PageBean<Student>(newPageNum, pageSize, totalRecord);
+		int startIndex = pb.getStartIndex();
+		pb.setList(studentDao.findStudent(name, sex, startIndex, pageSize));
+		return pb;
 	}
 
 }

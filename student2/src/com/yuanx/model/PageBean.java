@@ -12,6 +12,8 @@ public class PageBean<T> {
 
 	private List<T> list; // 每页要显示的数据放在list集合中
 
+	public PageBean() {
+	}
 	// 分页显示的页数,比如在页面上显示1，2，3，4，5页，start就为1，end就为5，这个也是算过来的
 	// private int start;
 	// private int end;

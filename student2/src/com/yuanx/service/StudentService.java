@@ -15,4 +15,6 @@ public interface StudentService {
 
 	PageBean<Student> findAllStudentWithPage(int newPageNum, int pageSize);
 
+	PageBean<Student> findStudentWithPage(String name, int sex, int newPageNum, int pageSize);
+
 }
