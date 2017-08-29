@@ -2,7 +2,7 @@
     <wb-module deploy-name="student2">
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/com/yuanx/resource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/resource"/>
         <property name="java-output-path" value="/student2/build/classes"/>
         <property name="context-root" value="student"/>
     </wb-module>

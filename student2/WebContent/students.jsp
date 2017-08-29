@@ -23,7 +23,7 @@
 	<hr>query:<br>
 	<input type="hidden" name="option" value="query"/>
 	name:<input type="text" name="queryName" value="${name }"/>&nbsp;&nbsp;
-	sex:<input type="radio" ${sex==0?'checked':'' } name="sex" value="1"/>男
+	sex:<input type="radio" ${sex==1?'checked':'' } name="sex" value="1"/>男
 	<input type="radio" ${sex==0?'checked':'' } name="sex" value="0"/>女
 	<input type="radio" ${sex==2?'checked':'' } name="sex" value="2" checked/>全部
 	<a id="query" >查询</a>
